@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="style.css" rel="stylesheet" />
+	<title></title>
+	<style>
+input[type="text"],
+textarea{
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  font: 17px Calibri;
+  width: 80%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+select {
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  font: 17px Calibri;
+  width: 84%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+input[type="button"] {
+    display: block;
+    font-size: 1.25rem;
+    margin: 25px auto;
+    margin-top: 5%;
+    background-color: lightpink;
+    border: none;
+    color: saddlebrown;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+input[type="button"]:hover {
+  background-color: black;
+  color: ghostwhite;
+}
+
+</style>
+</head>
+<body style="background-color: #FF8FAB;">
+	<div class="header">
+  		<a href="#default" class="logo"><h1>Foody's Heaven</h1></a>
+  		<div class="header-right">
+    		<a href="index.html">Home</a>
+    		<a href="contact.html">Contact</a>
+    		<a href="contact.html">About</a>
+  		</div>
+	</div>
+	<div id="blog_start">
+
+		<div class="left" style="width: 47%; background-color: #FF8FAB;">
+			<h1 style="color: #FFE5EC;">About Us</h1>
+			<p style="color: #FFE5EC;">We Happy Home Corporation aim at making everyday life of you lovely people a little easier. We host different websites like household item order, food ordering. This website focuses on food blogs and restaurant reviews which will make your weekends special with your special ones!</p>
+			<img src="happy.jpeg" width="25%" height="180px">
+			<p style="color: #FFE5EC;">Thank you for reaching out to us! Any query oe any suggestion or even collaborations are welcome. We will contact you at the earliest. We wish a good day!</p>
+		</div>
+
+		<div class="main" style="width: 50%; background-color: whitesmoke;">
+			<form style="margin: 10px;">
+
+			    <label for="fname">Name</label><br>
+			    <input type="text" id="name" name="firstname" placeholder="Your name.."><br>
+
+
+        		<label for="email">Email</label><br>
+          		<input type="text" id="email" placeholder="Your email address..." /><br>
+        
+
+			    <label for="country">Country</label><br>
+			    <select id="country" name="country">
+			      <option value="australia">Indian</option>
+			      <option value="canada">USA</option>
+			      <option value="usa">Japan</option>
+			    </select><br>
+
+			    <label for="subject">Subject</label><br>
+			    <textarea id="subject" name="subject" placeholder="Reason of contact..." style="height:200px"></textarea><br>
+
+			    <input type="button" id="bt" value="Done!" onclick="saveFile()" />
+
+  			</form>
+		</div>
+
+	</div>
+	<img src="foot.png" width="100%">
+</body>
+<footer>
+		Copyright &copy; 2023, Happy Home Corporation
+</footer>
+<script type="text/javascript">
+         let saveFile = () => {
+
+            const name = document.getElementById("name");
+            const email = document.getElementById("email");
+            const country = document.getElementById("country");
+            const subject = document.getElementById("subject");
+
+            let data = "\r Name: " + name.value + " \r\n " + "Email: " + email.value + " \r\n " + "Country: " + country.value + " \r\n " + "Subject: " + subject.value;
+            console.log(data);
+
+            const textToBLOB = new Blob([data], { type: "text/plain" });
+            var filename = "contact_"+name.value+".txt";
+
+            let newLink = document.createElement("a");
+            newLink.download = filename;
+
+            if (window.webkitURL != null) {
+                newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+            } else {
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+            }
+
+            newLink.click();
+
+            location.replace("index.html");
+
+        };
+</script>
+</html>		

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="style.css" rel="stylesheet" />
+<style>
+input[type="text"],
+textarea{
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  font: 17px Calibri;
+  width: 95%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+select {
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  font: 17px Calibri;
+  width: 97.5%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+input[type="button"] {
+    display: block;
+    font-size: 1.25rem;
+    margin: 25px auto;
+    margin-top: 5%;
+    background-color: lightpink;
+    border: none;
+    color: saddlebrown;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+input[type="button"]:hover {
+  background-color: black;
+  color: ghostwhite;
+}
+
+</style>
+</head>
+<body>
+
+  <div class="header">
+      <a href="#default" class="logo"><h1>Foody's Heaven</h1></a>
+      <div class="header-right">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html">About</a>
+      </div>
+  </div>
+
+<div id="blog_start">
+    <div class="left side">
+      <a href="form2.html">Add recipe!</a>
+        <a href="recipe.html">Read recipes</a>
+        <a href="rest.html">Restaurant Feedback</a>
+        <a href="form1.html">Website Feedback</a>
+    </div>
+    
+    <div class="main" style="background-color: whitesmoke;">
+      
+      <div>
+        <h1 style="color: dimgrey;">Give us your secret Recipe</h1>
+        <div>
+          <input type="text" id="name" placeholder="The Cook" />
+        </div>
+        <div>
+          <input type="text" id="email" placeholder="The Cook's email" />
+        </div>
+        <div>
+          <input type="text" id="dish" placeholder="Name the dish" />
+        </div>
+        <div>
+          <textarea id="recipe" name="recipe" placeholder="What's the secret recipe?" style="height: 100px;"></textarea>
+        </div>
+        <div>
+          <textarea id="img" name="img" placeholder="Image URL" style="height: 100px;"></textarea>
+        </div>
+        <div>
+          <input type="button" id="bt" value="Share the recipe!" onclick="saveFile()" />
+        </div>
+      </div>
+    
+    </div>
+
+    <div class="right">
+      <h1>About Us</h1>
+      <p>We Happy Home Corporation aim at making everyday life of you lovely people a little easier. We host different websites like household item order, food ordering. This website focuses on food blogs and restaurant reviews which will make your weekends special with your special ones!</p>
+    </div>
+</div>
+
+<img src="foot.png" width="100%">
+
+</body>
+<footer>
+    Copyright &copy; 2023, Happy Home Corporation
+</footer>
+<script type="text/javascript">
+         let saveFile = () => {
+
+            const name = document.getElementById("name");
+            const email = document.getElementById("email");
+            const dish = document.getElementById("dish");
+            const msg = document.getElementById("recipe");
+            const img_src = document.getElementById('img');
+
+            let data = "\r Name: " + name.value + " \r\n " + "Email: " + email.value + " \r\n " + "Dish: " + dish.value + " \r\n " + "Recipe: " + recipe.value + " \r\n " + "Image URL: " + img_src.value;
+            console.log(data);
+
+            const textToBLOB = new Blob([data], { type: "text/plain" });
+            var filename = "recipe_"+dish.value+".txt";
+
+            let newLink = document.createElement("a");
+            newLink.download = filename;
+
+            if (window.webkitURL != null) {
+                newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+            } else {
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+            }
+
+            newLink.click();
+
+            location.replace("recipe.html");
+        };
+</script>
+</html>

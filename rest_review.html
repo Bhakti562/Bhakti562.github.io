@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="style.css" rel="stylesheet" />
+	<title></title>
+</head>
+<style>
+input[type="text"],
+textarea{
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  font: 17px Calibri;
+  width: 95%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+input[type="radio"]{
+}
+input[type="button"] {
+    display: block;
+    font-size: 1.25rem;
+    margin: 25px auto;
+    margin-top: 5%;
+    background-color: lightpink;
+    border: none;
+    color: saddlebrown;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+input[type="button"]:hover {
+  background-color: black;
+  color: ghostwhite;
+}
+
+</style>
+<body>
+	<div class="header">
+  		<a href="#default" class="logo"><h1>Foody's Heaven</h1></a>
+  		<div class="header-right">
+    		<a href="index.html">Home</a>
+    		<a href="contact.html">Contact</a>
+    		<a href="contact.html">About</a>
+  		</div>
+	</div>
+	<div id="blog_start">
+		<div class="left side">
+			<a href="form2.html">Add recipe!</a>
+  			<a href="recipe.html">Read recipes</a>
+  			<a href="rest.html">Restaurant Feedback</a>
+  			<a href="form1.html">Website Feedback</a>
+		</div>
+		<div class="main"  style="background-color: whitesmoke;">
+			<h1>UMO MAS</h1>
+			<p style="text-align: justify;">Goa’s newest restaurants are bringing city favourites to the beach town
+From Panjim to Assagao, these new eateries from Mumbai, Delhi and beyond are targeting Goa’s newest residents</p>
+			<img src="https://d4t7t8y8xqo0t.cloudfront.net/app/eazymedia/restaurant%2F682465%2Frestaurant120220106064323.jpg" width="60%" height="300px">
+			<p style="text-align: justify;">Even before The New York Times deemed a new tribe called the “pandemic deserters”, people from Indian metros had set afoot the great Goa renaissance, trading their manic city lives for some pastoral peace. After the first lockdown, the sunny state saw a fresh wave of residents—city dwellers who not only chose to isolate but soon enough made Goa their new home.<br><br>
+
+The effect of this mass exodus from cities into the smallest state in India is evident today not only in Goa’s rising rents and unabated construction frenzy, but also in a slew of new restaurant openings—chains that are relocating or expanding to serve the ongoing #WorkFromGoa movement. In the pandemic haze, the destination has emerged as the favourite meeting point for a diverse horde of vacationers during this age of travel restrictions. Add to this cheaper rents, lower overhead costs, affordable licenses and the reliable pleasures of the freshest seafood, and you have an abridged tutorial on why Goa is a charm for most restaurateurs today.</p>
+
+      <div>
+        <h1>Review restaurant</h1>
+        <div>
+          <input type="text" id="name" placeholder="Name" />
+      </div>
+
+		  <div>
+          <textarea id="food" name="food" placeholder="Food review..." style="height: 100px;"></textarea>
+      </div>
+
+      <div>
+        	<p>Rate the food</p>
+          <input type="radio" id="1" name="rating" value="1">
+          <label for="1">1</label>
+          <input type="radio" id="2" name="rating" value="2">
+          <label for="2">2</label>
+          <input type="radio" id="3" name="rating" value="3">
+          <label for="3">3</label>
+          <input type="radio" id="4" name="rating" value="4">
+          <label for="4">4</label>
+          <input type="radio" id="5" name="rating" value="5">
+          <label for="5">5</label>
+      </div>
+
+      <div>
+          <textarea id="amb" name="amb" placeholder="Ambience review..." style="height: 100px;"></textarea>
+      </div>
+
+      <div>
+        <p>Rate the ambience</p>
+        <input type="radio" id="1" name="ambience" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="ambience" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="ambience" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="ambience" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="ambience" value="5">
+        <label for="5">5</label>
+      </div>
+
+        <div>
+          <input type="button" id="bt" value="Submit your review" onclick="saveFile()" />
+        </div>
+      </div>
+
+		</div>
+		<div class="right">
+			<h1>About Us</h1>
+			<p>We Happy Home Corporation aim at making everyday life of you lovely people a little easier. We host different websites like household item order, food ordering. This website focuses on food blogs and restaurant reviews which will make your weekends special with your special ones!</p>
+		</div>
+	</div>
+	<img src="foot.png" width="100%">
+</body>
+<footer>
+		Copyright &copy; 2023, Happy Home Corporation
+</footer>
+<script type="text/javascript">
+	         let saveFile = () => {
+
+            const name = document.getElementById("name");
+            const food = document.getElementById("food");
+            var food_rating = document.getElementsByName('rating');
+            const ambience = document.getElementById("amb");
+            var amb_rating = document.getElementsByName('ambience');
+            let data = "\r Name: " + name.value + " \r\n " + "Food Review: " + food.value + " \r\n " + "Food Rating: ";
+            for(i = 0; i < food_rating.length; i++) {
+            	if(food_rating[i].checked)
+            		data+=food_rating[i].value;
+        	  }
+
+            data+= " \r\n " + "Ambience Review: " + ambience.value + " \r\n " + "Ambience Rating: ";
+            for(i = 0; i < amb_rating.length; i++) {
+              if(amb_rating[i].checked)
+                data+=amb_rating[i].value;
+            }
+        	
+            console.log(data);
+            const textToBLOB = new Blob([data], { type: "text/plain" });
+            var filename = "rest_review_"+name.value+".txt";
+
+            let newLink = document.createElement("a");
+            newLink.download = filename;
+
+            if (window.webkitURL != null) {
+                newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+            } else {
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+            }
+
+            newLink.click();
+
+            location.replace("index.html");
+        };
+</script>
+</html>

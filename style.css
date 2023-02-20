@@ -1,0 +1,125 @@
+.box {
+	margin: 10px;
+}
+
+body{
+	text-align: center;
+	margin: 0;
+}
+
+p{
+	color: #36454F;
+	font-size: 18px;
+	padding: 10px;
+}
+
+li{
+	color: #36454F;
+	font-size: 18px;
+	padding: 2px;
+}
+
+li:hover{
+	color: darkcyan;
+}
+
+ul{
+	padding: 0;
+}
+
+.header {
+  overflow: hidden;
+  background-color: lightpink;
+  padding: 20px 10px;
+}
+
+.header a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header-right a:hover {
+  background-color: floralwhite;
+  color: lightpink;
+}
+
+.header-right {
+  float: right;
+  padding: 20px 10px;
+}
+
+
+.left {
+  	float: left;
+  	width: 15%;
+  	padding: 1.5%;
+}
+
+.main {
+  	float: left;
+  	width: 60%;
+}
+
+.right {
+  	float: left;
+  	width: 19%;
+  	padding: 1.5%;
+}
+
+.side a{
+	color: black;
+	display: block;
+	width:90%;
+  	text-decoration: none;
+  	font-size: 18px;
+  	border-radius: 4px;
+  	margin-top: 10px;
+  	margin-bottom: 10px;
+  	padding-top: 10px;
+  	padding-bottom: 10px;
+}
+.side a:hover {
+  background-color: darkcyan;
+  color: ghostwhite;
+}
+
+footer {
+	padding: 10px;
+ 	text-align: center;
+	background-color: #564C4D;
+	color: white;
+}
+
+button{
+  	display: block;
+  	font-size: 1.25rem;
+  	margin: 25px auto;
+  	margin-top: 5%;
+  	background-color: lightpink;
+  	border: none;
+  	color: saddlebrown;
+  	width: 200px;
+  	height: 50px;
+  	border-radius: 25px;
+}
+
+button:hover {
+  background-color: black;
+  color: ghostwhite;
+}
+
+a{
+	color: white;
+}
+

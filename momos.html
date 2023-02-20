@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="style.css" rel="stylesheet" />
+	<title></title>
+</head>
+<style>
+input[type="text"],
+textarea{
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  font: 17px Calibri;
+  width: 95%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+input[type="radio"]{
+}
+input[type="button"] {
+    display: block;
+    font-size: 1.25rem;
+    margin: 25px auto;
+    margin-top: 5%;
+    background-color: lightpink;
+    border: none;
+    color: saddlebrown;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+input[type="button"]:hover {
+  background-color: black;
+  color: ghostwhite;
+}
+
+</style>
+<body>
+	<div class="header">
+  		<a href="#default" class="logo"><h1>Foody's Heaven</h1></a>
+  		<div class="header-right">
+    		<a href="index.html">Home</a>
+    		<a href="contact.html">Contact</a>
+    		<a href="contact.html">About</a>
+  		</div>
+	</div>
+	<div id="blog_start">
+		<div class="left side">
+			<a href="form2.html">Add recipe!</a>
+  			<a href="recipe.html">Read recipes</a>
+  			<a href="rest.html">Restaurant Feedback</a>
+  			<a href="form1.html">Website Feedback</a>
+		</div>
+		<div class="main" style="background-color: whitesmoke;">
+			<h1>MOMOS</h1>
+			<p>This recipe is brought to you by Bhakti. We will see whats her secret recipe for this delicacy. Try out the dish and let us know how it went. Dont forget to leave a comment for the recipe after trying this one out.</p>
+			<img src="https://www.thespruceeats.com/thmb/UnVh_-znw7ikMUciZIx5sNqBtTU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/steamed-momos-wontons-1957616-hero-01-1c59e22bad0347daa8f0dfe12894bc3c.jpg" width="60%" height="300px">
+			<p style="text-align: justify;">Method of cooking: Momos can be steamed, baked or deep-fried. We prefer steamed momos over the fried ones. This recipe is for making steamed momos.<br><br>
+Savory stuffing: This veg momo recipe has a stuffing of mix veggies. The veggies I prefer to add are a mix of cabbage, carrots, french beans, capsicum and onions. Sometimes I also add white button mushrooms for a meaty texture and they also give a nice umami flavor.<br><br>
+Dough: The dough for the dumplings is made with all-purpose flour. But you can even make the dough with whole wheat flour.<br><br>
+Taste: In this recipe, the savory veggie filling has a balanced taste and is lightly spiced, so that it accompanies any spicy and hot sauce very well.<br><br>
+Time intensive: Making momos or dim sum takes quite a good amount of time. So when you have enough time to spare, then make them. If you have a helping hand, then the time will reduce. But if you do everything on your own, it takes about 1.5 to 2 hrs, depending on your working speed and the gadgets you have in your kitchen.<br><br>
+Shaping: The shaping of the momos come through practice and I do shape them decently. In the step-by-step photo guide below, I have shared two ways of shaping momos. Choose the shaping method that is easy for you.</p>
+
+      <div>
+        <h1>Review recipe</h1>
+        <div>
+          <input type="text" id="name" placeholder="Name" />
+        </div>
+
+		<div>
+          <textarea id="recipe" name="experience" placeholder="How did it go?..." style="height: 100px;"></textarea>
+        </div>
+
+<div>
+	<p>Rate the recipe</p>
+  <input type="radio" id="1" name="rating" value="1">
+  <label for="1">1</label>
+  <input type="radio" id="2" name="rating" value="2">
+  <label for="2">2</label>
+  <input type="radio" id="3" name="rating" value="3">
+  <label for="3">3</label>
+  <input type="radio" id="4" name="rating" value="4">
+  <label for="4">4</label>
+  <input type="radio" id="5" name="rating" value="5">
+  <label for="5">5</label>
+  </div>
+
+        <div>
+          <input type="button" id="bt" value="Submit your review" onclick="saveFile()" />
+        </div>
+      </div>
+
+		</div>
+		<div class="right">
+			<h1>About Us</h1>
+			<p>We Happy Home Corporation aim at making everyday life of you lovely people a little easier. We host different websites like household item order, food ordering. This website focuses on food blogs and restaurant reviews which will make your weekends special with your special ones!</p>
+		</div>
+	</div>
+	<img src="foot.png" width="100%">
+</body>
+<footer>
+		Copyright &copy; 2023, Happy Home Corporation
+</footer>
+<script type="text/javascript">
+	         let saveFile = () => {
+
+            const name = document.getElementById("name");
+            const msg = document.getElementById("recipe");
+            var ele = document.getElementsByName('rating');
+            let data = "\r Name: " + name.value + " \r\n " + "Experience: " + msg.value + " \r\n " + "Rating: ";
+			for(i = 0; i < ele.length; i++) {
+            	if(ele[i].checked)
+            		data+=ele[i].value;
+        	}
+        	
+            console.log(data);
+            const textToBLOB = new Blob([data], { type: "text/plain" });
+            var filename = "review_"+name.value+".txt";
+
+            let newLink = document.createElement("a");
+            newLink.download = filename;
+
+            if (window.webkitURL != null) {
+                newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+            } else {
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+            }
+
+            newLink.click();
+
+            location.replace("index.html");
+        };
+</script>
+</html>
